@@ -1,0 +1,18 @@
+{
+	"name": "elevenbytes/wp-utilitatem",
+	"version": "0.1.0",
+	"type": "library",
+	"authors": [],
+	"autoload": {
+		"psr-4": {
+			"WpUtm\\": "src/"
+		}
+	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "^3.6",
+		"wp-coding-standards/wpcs": "^2.3"
+	},
+	"require": {
+		"php-di/php-di": "^7.0"
+	}
+}
