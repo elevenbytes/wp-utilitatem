@@ -9,7 +9,7 @@ class Util {
 		public string $type
 	) {
 		$this->main_file = $main_file;
-		$this->type = $type;
+		$this->type      = $type;
 	}
 
 	public function get_asset_url( string $path ) {

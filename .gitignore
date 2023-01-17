@@ -33,7 +33,6 @@ phpunit-watcher.yml
 .vscode/
 secrets.php
 .wp-dev-cache
-*.zip
 package-lock.json
 composer.lock
 .wpenv

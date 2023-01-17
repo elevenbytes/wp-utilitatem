@@ -55,9 +55,13 @@ class AssetsRegistration {
 
 	public function add_inline_assets( string $type = 'script' ) {
 		if ( $type === 'script' ) {
-			$jc = new \ReflectionClass( $this->js );
+			global $wp_scripts;
+			$container = $wp_scripts;
+			$jc        = new \ReflectionClass( $this->js );
 		} else {
-			$jc = new \ReflectionClass( $this->css );
+			global $wp_styles;
+			$container = $wp_styles;
+			$jc        = new \ReflectionClass( $this->css );
 		}
 
 		$jc_methods = $jc->getMethods();
@@ -68,6 +72,12 @@ class AssetsRegistration {
 
 			foreach ( $attributes as $attribute ) {
 				$ai = $attribute->newInstance();
+
+				// This hook is not enqueued. Skip.
+				if ( ! in_array( $ai->hook, $container->queue, true ) ) {
+					continue;
+				}
+
 				if ( $type === 'script' ) {
 					\wp_add_inline_script(
 						$ai->hook,
@@ -125,7 +135,7 @@ class AssetsRegistration {
 	 * @return array Script data (version, dependencies)
 	 */
 	public function get_script_data( $script_name ) {
-		$assets_path = $this->get_asset_abs_path( 'build/js' . $script_name . '.bundle.asset.php' );
+		$assets_path = $this->util->get_asset_abs_path( 'build/js' . $script_name . '.bundle.asset.php' );
 
 		if ( file_exists( $assets_path ) ) {
 			$data = require $assets_path;

@@ -15,13 +15,17 @@
 		"format-php": "./vendor/bin/phpcbf .",
 		"format-scss": "wp-scripts lint-style 'scss/**/*' --fix",
 		"format": "concurrently 'npm:format-*'",
-		"lint-php": "./vendor/bin/phpcs ."
+		"lint-php": "./vendor/bin/phpcs .",
+		"pretest-unit-php": "wp-env start",
+		"test-unit-php": "wp-env run tests-wordpress /var/www/html/wp-content/plugins/wp-utilitatem/vendor/bin/phpunit -c /var/www/html/wp-content/plugins/wp-utilitatem/phpunit.xml --verbose",
+		"pretest-unit-php-debug": "wp-env start --xdebug",
+		"test-unit-php-debug": "wp-env run tests-wordpress /var/www/html/wp-content/plugins/wp-utilitatem/vendor/bin/phpunit -c /var/www/html/wp-content/plugins/wp-utilitatem/phpunit.xml --verbose"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^25.0.0",
 		"concurrently": "^7.6.0",
-		"prettier": "npm:wp-prettier@2.6.2",
-		"sass": "^1.57.1"
+		"sass": "^1.57.1",
+		"@wordpress/env": "https://gitpkg.now.sh/WordPress/gutenberg/packages/env?rpp-wp-env-changes"
 	},
 	"keywords": [],
 	"author": "",
