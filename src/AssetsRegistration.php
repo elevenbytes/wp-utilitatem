@@ -9,8 +9,10 @@ class AssetsRegistration {
 	public function register_assets() {
 		\add_action( 'wp_loaded', array( $this, 'register_scripts' ) );
 		\add_action( 'wp_loaded', array( $this, 'register_styles' ) );
-		\add_action( 'wp_enqueue_scripts', fn() => $this->add_inline_assets( 'style' ) );
-		\add_action( 'wp_enqueue_scripts', fn() => $this->add_inline_assets( 'script' ) );
+		\add_action( 'enqueue_block_assets', fn() => $this->add_inline_assets( 'style' ), 100 );
+		\add_action( 'enqueue_block_assets', fn() => $this->add_inline_assets( 'script' ), 100 );
+		\add_action( 'enqueue_block_editor_assets', fn() => $this->add_inline_assets( 'style' ), 100 );
+		\add_action( 'enqueue_block_editor_assets', fn() => $this->add_inline_assets( 'script' ), 100 );
 	}
 
 	public function __construct(
