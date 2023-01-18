@@ -52,6 +52,7 @@ class Main {
 		$definitions[ Util::class ]               = \DI\autowire()->constructor( \DI\get( 'main_file' ), \DI\get( 'type' ) );
 
 		$builder = new ContainerBuilder();
+		$builder->useAttributes(true);
 		$builder->addDefinitions( $definitions );
 		$this->container = $builder->build();
 		return $this->container;
