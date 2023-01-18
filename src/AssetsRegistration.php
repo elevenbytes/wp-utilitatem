@@ -137,7 +137,7 @@ class AssetsRegistration {
 	 * @return array Script data (version, dependencies)
 	 */
 	public function get_script_data( $script_name ) {
-		$assets_path = $this->util->get_asset_abs_path( 'build/js' . $script_name . '.bundle.asset.php' );
+		$assets_path = $this->util->get_asset_abs_path( 'build/js/' . $script_name . '.bundle.asset.php' );
 
 		if ( file_exists( $assets_path ) ) {
 			$data = require $assets_path;
