@@ -10,8 +10,8 @@ You need to provide implementations of interfaces IDynamicJs and IDynamicCss, wh
 $wputm = new \WpUtm\Main(
 	array(
 		'definitions' => array(
-			\WpUtm\Interfaces\IDynamicCss::class => \DI\create(\YourPlugin\DynamicCss::class),
-			\WpUtm\Interfaces\IDynamicJs::class => \DI\create(\YourPlugin\DynamicJs::class),
+			\WpUtm\Interfaces\IDynamicCss::class => \DI\autowire(\YourPlugin\DynamicCss::class),
+			\WpUtm\Interfaces\IDynamicJs::class => \DI\autowire(\YourPlugin\DynamicJs::class),
 			'main_file' => YOUR_PLUGIN_FILE,
 			'type' => 'plugin', // set theme or plugin here
 			'prefix' => 'your_plugin_prefix'
