@@ -1,5 +1,6 @@
 {
 	"name": "elevenbytes/wp-utilitatem",
+	"version": "0.1.1",
 	"type": "library",
 	"authors": [],
 	"autoload": {
