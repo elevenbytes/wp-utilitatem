@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace WpUtm;
 
 use DI\ContainerBuilder;
-use DI\Container;
 use Psr\Container\ContainerInterface;
 
 use WpUtm\Interfaces\IDynamicCss;
@@ -24,7 +23,6 @@ class Main {
 			$args,
 			array(
 				'definitions' => array(),
-				'main_file'   => '',
 			)
 		);
 
@@ -48,11 +46,24 @@ class Main {
 			return $this->container;
 		}
 
-		$definitions[ AssetsRegistration::class ] = \DI\autowire()->constructor( \DI\get( IDynamicCss::class ), \DI\get( IDynamicJs::class ), \DI\get( Util::class ), \DI\get( 'prefix' ) );
-		$definitions[ Util::class ]               = \DI\autowire()->constructor( \DI\get( 'main_file' ), \DI\get( 'type' ) );
+		$definitions[ AssetsRegistration::class ] = function( ContainerInterface $c ) {
+			return new AssetsRegistration(
+				$c->get( IDynamicCss::class ),
+				$c->get( IDynamicJs::class ),
+				$c->get( Util::class ),
+				$c->get( 'prefix' )
+			);
+		};
+
+		$definitions[ Util::class ] = function ( ContainerInterface $c ) {
+			return new Util(
+				$c->get( 'main_file' ),
+				$c->get( 'type' )
+			);
+		};
 
 		$builder = new ContainerBuilder();
-		$builder->useAttributes(true);
+		$builder->useAttributes( true );
 		$builder->addDefinitions( $definitions );
 		$this->container = $builder->build();
 		return $this->container;
