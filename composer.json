@@ -32,6 +32,6 @@
 		"wp-phpunit/wp-phpunit": "^6.1"
 	},
 	"require": {
-		"php-di/php-di": "^7.0"
+		"php-di/php-di": "^7.0.1"
 	}
 }
