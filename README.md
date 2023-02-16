@@ -28,6 +28,15 @@ WpUtm assumes that your JavaScript files will be in `build/js`, and css files in
 
 It is recommended that you create your own `Assets.php` and inject `\WpUtm\AssetsRegistration` into it. Then simply call the `AssetsRegistration->register_scripts()` method.
 
+### Adding footer scripts
+
+By default, scripts are enqueued in the header. If you want a script to be enqueued in the footer, add its webpack entry point name within definitions `footer_scripts` array:
+
+```
+'footer_scripts' => array( 'my-script-1', 'my-script-2' )
+```
+
+
 ## Extracted styles
 
 It is assumed that you will be using `@wordpress/scripts` as a base webpack configuration. Extracted css files from JS will be registered as `{$prefix}-extracted-css-{$webpack_entry_point}`.

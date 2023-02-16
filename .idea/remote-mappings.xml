@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="php@df5ea494-3d9b-4dd6-a434-6cd20e563352">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$" remote-root="/var/www/html/wp-content/plugins/wp-utilitatem" />
+              <mapping local-root="$USER_HOME$/wp-env/c50c4dbe02031db8920aae61fdbf8401/tests-WordPress" remote-root="/var/www/html" />
+            </list>
+          </settings>
+        </remote-mappings>
+      </list>
+    </list>
+  </component>
+</project>

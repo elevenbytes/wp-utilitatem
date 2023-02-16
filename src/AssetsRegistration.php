@@ -19,13 +19,9 @@ class AssetsRegistration {
 		public IDynamicCss $css,
 		public IDynamicJs $js,
 		public Util $util,
-		public string $prefix
-	) {
-		$this->css    = $css;
-		$this->js     = $js;
-		$this->util   = $util;
-		$this->prefix = $prefix;
-	}
+		public string $prefix,
+		public array $footer_scripts
+	) {}
 
 	public function register_scripts() {
 		$scripts_path = $this->util->get_asset_abs_path( 'build/js' );
@@ -43,12 +39,14 @@ class AssetsRegistration {
 				$name = $matches['name'];
 				$data = $this->get_script_data( $name );
 
+				$is_footer_script = \in_array( $name, $this->footer_scripts, true );
+
 				\wp_register_script(
 					"{$this->prefix}-{$name}",
 					$this->util->get_asset_url( "build/js/{$file}" ),
 					$data['dependencies'],
 					$data['version'],
-					false
+					$is_footer_script
 				);
 
 			}

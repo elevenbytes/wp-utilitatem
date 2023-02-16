@@ -7,10 +7,7 @@ class Util {
 	public function __construct(
 		public string $main_file,
 		public string $type
-	) {
-		$this->main_file = $main_file;
-		$this->type      = $type;
-	}
+	) {}
 
 	public function get_asset_url( string $path ) {
 		$path = ltrim( $path, '/' );

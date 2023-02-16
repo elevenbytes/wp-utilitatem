@@ -46,12 +46,20 @@ class Main {
 			return $this->container;
 		}
 
+		$definitions = \wp_parse_args(
+			$definitions,
+			array(
+				'footer_scripts' => array(),
+			)
+		);
+
 		$definitions[ AssetsRegistration::class ] = function( ContainerInterface $c ) {
 			return new AssetsRegistration(
 				$c->get( IDynamicCss::class ),
 				$c->get( IDynamicJs::class ),
 				$c->get( Util::class ),
-				$c->get( 'prefix' )
+				$c->get( 'prefix' ),
+				$c->get( 'footer_scripts' )
 			);
 		};
 

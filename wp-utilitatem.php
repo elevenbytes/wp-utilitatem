@@ -24,6 +24,7 @@ function wputm_init() {
 				'main_file'                          => __FILE__,
 				'type'                               => 'plugin', // set theme or plugin here
 				'prefix'                             => 'wputm',
+				'footer_scripts'                     => array( 'footer-script' ),
 			),
 		)
 	);
